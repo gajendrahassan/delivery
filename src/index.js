@@ -42,6 +42,9 @@ app.use(express.urlencoded({ extended: true }))
 
 
 const delivery = require('./router/delivery')
+const order = require('./router/order')
+
+
 require('dotenv').config()
 require('./helper/db.connect')
 
@@ -50,6 +53,8 @@ app.use(morgan('dev'))
 app.use(cors())
 
 app.use('/api', delivery)
+app.use('/api', order)
+
 
 app.use( async (req, res, next)=>{
 
@@ -60,11 +65,8 @@ app.use( async (req, res, next)=>{
 
 app.use((err, req, res, next)=>{
 
-  res.status(err.status).send({
-    error:{
-      status:err.status || 500,
-      message:err.message || 'somthin went wrong!'
-    }
+  res.status(err.status).json({
+    error:err
   })
 })
 

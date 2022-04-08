@@ -22,12 +22,12 @@ try {
 
     let err = {
 
-        message:error.details[0].message,
+        message:error.message,
         status:406
     }
 
 
-  next(res.status(406).send(err))
+  next(err)
     
 }
 
