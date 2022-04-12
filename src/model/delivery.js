@@ -4,13 +4,13 @@ const Schema = mongoose.Schema
 
 const DeliverSchema = new Schema({
 
-name: {
-     type:String,
-     required:true,
-},
-
+name:String,
+address:String,
+phone:String,
 delivery_id:String,
-
+isAvailaible:Boolean,
+isActive:Boolean,
+status:Boolean,
 current_loc: {
 
      lat:String,

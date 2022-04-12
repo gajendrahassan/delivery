@@ -4,15 +4,16 @@ const Valid = require('joi');
 const deliverySchema = Valid.object({
 
     name:Valid.string().min(15),
-    adress: Valid.string(),
+    address: Valid.string(),
     phone:Valid.string(),
     delivery_id:Valid.string(),
     isAvailaible:Valid.boolean(),
     isActive:Valid.boolean(),
-    curr_loc:Valid.object({
-        lng:Valid.string().required(),
-        lat:Valid.string().required(),
+    current_loc:Valid.object({
+        lng:Valid.string(),
+        lat:Valid.string(),
     }),
+    status:Valid.boolean()
    
     
 
@@ -57,6 +58,10 @@ const OrderSchema = Valid.object({
         restuarant_name:Valid.string().required(),
         restuarant_id:Valid.string().required(),
         restuarant_adress:Valid.string().required(),
+        restuarant_loc:Valid.object({
+            lng:Valid.string(),
+            lat:Valid.string()
+        })
 
     })
    
