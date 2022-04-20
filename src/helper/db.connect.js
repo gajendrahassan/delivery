@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect('mongodb://food911:p%40ssw0rd@43.240.67.103/food911db?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
    
