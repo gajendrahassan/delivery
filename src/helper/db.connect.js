@@ -1,12 +1,13 @@
 const mongoose = require('mongoose')
 
 mongoose
-  .connect('mongodb://food911:p%40ssw0rd@43.240.67.103/food911db?retryWrites=true&w=majority', {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
    
   })
   .then(() => {
+    // db.collection.createIndex( { location : "2dsphere" } )
     console.log('mongodb connected.')
   })
   .catch((err) => console.log(err.message))

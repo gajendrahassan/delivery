@@ -1,4 +1,4 @@
-// const Order = require('../model/Order')
+const Order = require('../model/order')
 const { OrderSchema } = require('../helper/validation')
 const createError = require('http-errors')
 const { io } = require('../index')
@@ -11,11 +11,11 @@ try {
 
 
 
-    // const neworder = new Order(result)
+    const neworder = new Order(result)
 
-    // const order =    await new Order.save()
+                    await neworder.save()
 
-    res.send(result)
+    res.send({msg:"order saved succufully!"})
 
     
 
@@ -40,6 +40,10 @@ exports.getOrder = async (req, res, next)=>{
 
    
     try {
+
+
+        // .find({ location: { $nearSphere: { $geometry: { type: "Point", coordinates: [ 77.4485783, 12.9794457 ] }} } })
+
         io.emit('order', {msg:"orders data"})
 
 res.send('hellooooo')

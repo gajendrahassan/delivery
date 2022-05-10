@@ -11,13 +11,20 @@ delivery_id:String,
 isAvailaible:Boolean,
 isActive:Boolean,
 status:Boolean,
-current_loc: {
+location: {
 
-     lat:String,
-     lng:String
+     coordinates:[Number],
+     type:{
+          type:String,
+          enum: ['Point'],
+          default:'Point'
+     }
 }
 
 })
+
+
+DeliverSchema.index({ location: "2dsphere" });
 
 
 const Delivery = mongoose.model('delivery', DeliverSchema)

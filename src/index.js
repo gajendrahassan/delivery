@@ -14,7 +14,7 @@ const io = socketIO(server, {
   transports:['polling'],
   cors:{
     cors: {
-      origin: "http://localhost:3000"
+      origin: "*"
     }
   }
 })
@@ -23,7 +23,7 @@ const io = socketIO(server, {
 io.on('connection', (socket) => {
   console.log('A user is connected');
 
-  socket.emit("message", {msg:"welcome to chat bot"})
+  socket.emit("message", {msg:"Node Socket connected Succefully!"})
 
   socket.on('message', (message) => {
     console.log(`message from ${socket.id} : ${message}`);
