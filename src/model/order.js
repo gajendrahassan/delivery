@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
-const DeliverSchema = new Schema({
+const OrderSchema = new Schema({
 
     order_id:String,
 
@@ -25,9 +25,9 @@ const DeliverSchema = new Schema({
 
 })
 
-Order.index({ location: "2dsphere" });
+// Order.index({ location: "2dsphere" });
 
-const Order = mongoose.model('order', DeliverSchema)
+const Order = mongoose.model('order', OrderSchema)
 module.exports = Order
 
 
