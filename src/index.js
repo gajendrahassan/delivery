@@ -23,7 +23,7 @@ const io = socketIO(server, {
 io.on('connection', (socket) => {
   console.log('A user is connected');
 
-  socket.emit("message", {msg:"Node Socket connected Succefully!"})
+  socket.emit("message", {msg:"Node Socket connected Succefully!!"})
 
   socket.on('message', (message) => {
     console.log(`message from ${socket.id} : ${message}`);
