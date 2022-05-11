@@ -97,7 +97,10 @@ exports.getDeliveryUpdate = async (req, res, next)=>{
 
    
     try {
-        const delivery = await Delivery.findOneAndUpdate({delivery_id:req.params.id}, req.body)
+
+        const result = await deliverySchema.validateAsync(req.body)
+
+        const delivery = await Delivery.findOneAndUpdate({delivery_id:req.params.id}, result)
 
 
 

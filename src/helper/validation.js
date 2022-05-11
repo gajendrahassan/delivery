@@ -10,6 +10,8 @@ const deliverySchema = Valid.object({
     isActive:Valid.boolean(),
     location:Valid.object({
         coordinates:Valid.array(),
+        type:Valid.string().required()
+
     }),
     status:Valid.boolean()
    
@@ -30,6 +32,7 @@ const OrderSchema = Valid.object({
         restuarant_id:Valid.string().required(),
         location:Valid.object({
             coordinates:Valid.array(),
+            type:Valid.string().required()
         }),
 
     })
