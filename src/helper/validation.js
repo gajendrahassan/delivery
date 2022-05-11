@@ -4,7 +4,6 @@ const Valid = require('joi');
 const deliverySchema = Valid.object({
 
     name:Valid.string().min(2),
-    address: Valid.string(),
     phone:Valid.string(),
     delivery_id:Valid.string(),
     isAvailaible:Valid.boolean(),

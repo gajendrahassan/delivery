@@ -5,7 +5,6 @@ const Schema = mongoose.Schema
 const DeliverSchema = new Schema({
 
 name:String,
-address:String,
 phone:String,
 delivery_id:String,
 isAvailaible:Boolean,
