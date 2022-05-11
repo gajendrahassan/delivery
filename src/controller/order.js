@@ -1,6 +1,6 @@
 const Order = require('../model/order')
 const { OrderSchema } = require('../helper/validation')
-const createError = require('http-errors')
+// const createError = require('http-errors')
 const { io } = require('../index')
 
 exports.createOrder = async (req, res, next)=>{
@@ -8,15 +8,32 @@ exports.createOrder = async (req, res, next)=>{
 try {
     
     const result = await OrderSchema.validateAsync(req.body)
+    const isExist = await Order.findOne({order_id:req.body.order_id})
+
+    if(isExist) {
+
+        let err = {
+
+            message:'This Order ID is Already Exist',
+            status:406
+        }
+    
+    
+      next(err)
+    }  else {
+
+
+        const neworder = new Order(result)
+
+        await neworder.save()
+
+res.send({msg:"order saved succufully!"})
 
 
 
-    const neworder = new Order(result)
+    }
 
-                    await neworder.save()
-
-    res.send({msg:"order saved succufully!"})
-
+  
     
 
 } catch (error) {

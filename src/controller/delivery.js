@@ -176,3 +176,21 @@ try {
 
 
     }
+
+
+
+    exports.getDeliveryLocUpdate = async (req)=>{
+
+
+      console.log(req);
+
+     await Delivery.updateOne({delivery_id:req.data.id}, {$set:{
+
+        location:[req.data.lng, req.data.lat]
+
+      }})
+
+
+    }
+
+

@@ -25,6 +25,11 @@ io.on('connection', (socket) => {
 
   socket.emit("message", {msg:"Node Socket connected Succefully!!"})
 
+  socket.on('test', (data)=>{
+
+getDeliveryLocUpdate(data)
+  })
+
   socket.on('message', (message) => {
     console.log(`message from ${socket.id} : ${message}`);
   })
@@ -42,7 +47,8 @@ app.use(express.urlencoded({ extended: true }))
 
 
 const delivery = require('./router/delivery')
-const order = require('./router/order')
+const order = require('./router/order');
+const { getDeliveryLocUpdate } = require('./controller/delivery');
 
 
 require('dotenv').config()
