@@ -94,9 +94,12 @@ exports.getDelivery = async (req, res, next)=>{
 
 exports.getDeliveryUpdate = async (req, res, next)=>{
 
+
    
     try {
         const delivery = await Delivery.findOneAndUpdate({delivery_id:req.params.id}, req.body)
+
+
 
         if(!delivery){
 
@@ -110,6 +113,7 @@ exports.getDeliveryUpdate = async (req, res, next)=>{
          next(err)
 
         } else{
+
 
             res.status(201).send({msg:"Delivery Patner Updated Succefully!"})
 
@@ -144,6 +148,7 @@ exports.getDeliveryUpdate = async (req, res, next)=>{
 try {
 
     const delivery = await Delivery.findOneAndDelete({delivery_id:req.params.id})
+
 
     if(!delivery){
 
@@ -182,13 +187,13 @@ try {
     exports.getDeliveryLocUpdate = async (req)=>{
 
 
-      console.log(req);
+    //   console.log(req);
 
-     await Delivery.updateOne({delivery_id:req.data.id}, {$set:{
+    //  await Delivery.updateOne({delivery_id:req.data.id}, {$set:{
 
-        location:[req.data.lng, req.data.lat]
+    //     location:[req.data.lng, req.data.lat]
 
-      }})
+    //   }})
 
 
     }
